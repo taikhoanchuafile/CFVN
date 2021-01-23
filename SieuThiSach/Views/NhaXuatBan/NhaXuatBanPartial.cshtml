@@ -1,0 +1,25 @@
+﻿@using SieuThiSach.Models;
+@model List<NHAXUATBAN>
+
+<p><b> SÁCH THEO NHÀ XUẤT BẢN</b></p>
+@foreach(var item in Model)
+{
+    
+    <ul>
+    <li><i><a href="@Url.Action("SachTheoNXB", "NhaXuatBan", new { @manxb = item.MaNXB})">@item.TenNXB</a></i>
+    </ul>
+}
+
+@*<p><b> SÁCH THEO NHÀ XUẤT BẢN</b></p>
+<ul>
+    <li><i><a href="#">Nhà xuất bản trẻ</a></i>
+    <li><i><a href="#">NXB Thống kê</a></i>
+    <li><i><a href="#">Kim Đồng</a></i>
+    <li><i><a href="#">Đại học Quốc Gia</a></i>
+    <li><i><a href="#">Văn học nghệ thuật</a></i>
+    <li><i><a href="#">Văn hóa</a></i>
+    <li><i><a href="#">Lao động - Xã Hội</a></i>
+    <li>
+        <i><a href="#">Khoa học và Kỹ thuật</a></i>
+    </li>
+</ul>*@

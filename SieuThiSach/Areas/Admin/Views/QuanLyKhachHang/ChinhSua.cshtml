@@ -1,0 +1,100 @@
+﻿@model SieuThiSach.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Chỉnh sửa khách hàng";
+    Layout = "~/Areas/Admin/Views/LayoutAD/Admin_Layout.cshtml";
+}
+
+<h2>Chỉnh sửa khách hàng</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>KHACHHANG</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaKH, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("MaKH", Model.MaKH, new { @readonly = true })
+                @Html.ValidationMessageFor(model => model.MaKH)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HotenKH, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HotenKH)
+                @Html.ValidationMessageFor(model => model.HotenKH)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiachiKH, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DiachiKH)
+                @Html.ValidationMessageFor(model => model.DiachiKH)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DienthoaiKH, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DienthoaiKH)
+                @Html.ValidationMessageFor(model => model.DienthoaiKH)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenDN, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenDN)
+                @Html.ValidationMessageFor(model => model.TenDN)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Matkhau, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Matkhau)
+                @Html.ValidationMessageFor(model => model.Matkhau)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ngaysinh, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ngaysinh)
+                @Html.ValidationMessageFor(model => model.Ngaysinh)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gioitinh, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div style="float:left">@Html.RadioButton("Gioitinh", "True", true)<span>Nam</span></div>
+                <div style="float:left">@Html.RadioButton("Gioitinh", "False", false)<span>Nữ</span></div>
+            </div>
+        </div>
+        <div style="clear:both"></div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở về", "Index")
+</div>

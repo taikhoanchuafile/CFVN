@@ -1,0 +1,30 @@
+﻿@using SieuThiSach.Models;
+@model List<CHUDE>
+
+<p><b> SÁCH THEO CHỦ ĐỀ </b></p>
+@foreach (var item in Model)
+{
+
+    <ul type="square">
+        <li><i><a href="@Url.Action("SachTheoChuDe", "ChuDe", new { @machude = item.MaCD})">@item.Tenchude</a></i>
+    </ul>
+}
+
+
+
+@*<p><b> SÁCH THEO CHỦ ĐỀ </b></p>
+    <ul type="square">
+        <li><i><a href="#">Ngoại ngữ</a></i>
+        <li><i><a href="#">Công nghệ thông tin</a></i>
+        <li><i><a href="#">Luật</a></i>
+        <li><i><a href="#">Văn học</a></i>
+        <li><i><a href="#">Khoa học kỹ thuật</a></i>
+        <li><i><a href="#">Nông nghiệp</a></i>
+        <li><i><a href="#">Lịch sử, Địa lí</a></i>
+        <li><i><a href="#">Kinh tế</a></i>
+        <li>
+            <i><a href="#">Nghệ thuật sống</a></i>
+        </li>
+    </ul>*@
+
+

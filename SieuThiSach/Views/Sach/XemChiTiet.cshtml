@@ -1,0 +1,39 @@
+﻿@using SieuThiSach.Models;
+@model SACH
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/LayOut/NguoiDung_LayOut.cshtml";
+}
+
+<style>
+    #HinhAnh {
+        float:left;
+    }
+
+</style>
+
+<div style="font-size:15pt;margin-left:2%">
+    <div style="font-weight:bold;font-size:20pt;color:red">@Model.Tensach</div>
+    <div >
+        <img id="HinhAnh" src=" @Url.Content("~/HinhAnhSP/" + Model.Hinhminhhoa) " />
+        <div id="HinhAnh" style="margin-left:2%">
+            <div style="color:blue"><span style="color:black;font-weight:bold">Nhà xuấ bản</span> :@Model.NHAXUATBAN.TenNXB</div>
+            <div style="color:blue"><span style="color:black;font-weight:bold">Chủ đề:</span> :@Model.CHUDE.Tenchude</div>
+        </div>
+        
+    </div>
+    <div style="clear:both"></div>
+        <div> Mô tả: @Html.Raw(Model.Mota)</div>
+    <div style="float:right">
+        <div style="color:red"><span style="color:black">Giá bán:</span> @string.Format("{0:0,0} VND", Model.Dongia)/@Model.Donvitinh</div>
+        
+        <div >
+            <a href="@Url.Action("ThemGioHang", "GioHang", new { @iMaSach=@Model.Masach,@strURL=Request.Url.ToString()})">
+                <img src="~/HinhAnhGiaoDien/Chonmua.png" />
+            </a>
+        </div>
+    </div>
+        
+    </div>
+
+

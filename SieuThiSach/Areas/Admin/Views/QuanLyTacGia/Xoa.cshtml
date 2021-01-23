@@ -1,0 +1,56 @@
+﻿@model SieuThiSach.Models.TACGIA
+
+@{
+    ViewBag.Title = "Xóa tác giả";
+    Layout = "~/Areas/Admin/Views/LayoutAD/Admin_Layout.cshtml";
+}
+
+<h2>Xóa tác giả</h2>
+
+<h3>Bạn có chắc là xóa tác giả này không?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaTG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaTG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiachiTG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiachiTG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DienthoaiTG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienthoaiTG)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về", "Index")
+        </div>
+    }
+</div>

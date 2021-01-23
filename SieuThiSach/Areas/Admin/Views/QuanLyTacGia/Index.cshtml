@@ -1,0 +1,65 @@
+﻿@using SieuThiSach.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<TACGIA>
+
+@{
+    ViewBag.Title = "Quản lý tác giả";
+    Layout = "~/Areas/Admin/Views/LayoutAD/Admin_Layout.cshtml";
+}
+
+<h2>Quản lý tác giả</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "ThemMoi")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaTG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TenTG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DiachiTG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DienthoaiTG)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaTG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenTG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiachiTG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DienthoaiTG)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "ChinhSua", new { @matacgia = item.MaTG }) |
+            @Html.ActionLink("Hiển thị", "HienThi", new { @matacgia = item.MaTG }) |
+            @Html.ActionLink("Xóa", "Xoa", new { @matacgia = item.MaTG })
+        </td>
+    </tr>
+}
+
+</table>
+@*tạo số trang*@
+Trang @(Model.Count < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+<div id="MenuTrang">
+    @Html.PagedListPager(Model, pag => Url.Action("Index", new { @page = pag }))
+</div>
+<style>
+    #MenuTrang li {
+        display: inline;
+        padding: 0 1%;
+    }
+</style>

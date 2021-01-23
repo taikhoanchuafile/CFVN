@@ -1,0 +1,34 @@
+﻿@model SieuThiSach.Models.CHUDE
+
+@{
+    ViewBag.Title = "Hiển thị chu đề";
+    Layout = "~/Areas/Admin/Views/LayoutAD/Admin_Layout.cshtml";
+}
+
+<h2>Hiển thị chu đề</h2>
+
+<div>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaCD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaCD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tenchude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tenchude)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "ChinhSua", new { @machude = Model.MaCD }) |
+    @Html.ActionLink("Trở về", "Index")
+</p>

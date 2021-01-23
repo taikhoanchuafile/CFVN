@@ -1,0 +1,30 @@
+﻿<link href="~/Areas/Admin/AdminCSS/styledn.css" rel="stylesheet" />
+<link href="~/Content/fontawesome-free-5.11.2-web/css/all.min.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = null;
+}
+<h1 style="color:black">@ViewBag.ThongBao</h1>
+<div class=" w3l-login-form">
+    <h2>Đăng nhập</h2>
+    @using (Html.BeginForm())
+    {
+        <div class=" w3l-form-group">
+            <label>Tài khoản:</label>
+            <div class="group">
+                <i class="fa fa-user"></i>
+                <input type="text" name="txtTKAD" class="form-control" placeholder="Tài khoản" required="required" />
+            </div>
+        </div>
+        <div class=" w3l-form-group">
+            <label>Mật khẩu:</label>
+            <div class="group">
+                <i class="fa fa-unlock"></i>
+                <input type="password" name="txtMKAD" class="form-control" placeholder="Mật khẩu" required="required" />
+            </div>
+        </div>
+        <button type="submit">Đăng nhập</button>
+    }
+</div>
+
+

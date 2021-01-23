@@ -1,0 +1,24 @@
+﻿@using SieuThiSach.Models;
+@model List<SACH>
+@{
+    ViewBag.Title = "SachTheoNXB";
+    Layout = "~/Views/LayOut/NguoiDung_LayOut.cshtml";
+}
+@ViewBag.ThongBao
+@{
+    int i = 0;
+}
+@foreach (var item in Model)
+{
+    i++;
+    <div class="sach">
+        <p class="tensach"><a href="@Url.Action("XemChiTiet", "Sach", new { @masach = item.Masach})">@item.Tensach</a></p>
+        <img class="hinhsach" src="@Url.Content("~/HinhAnhSP/"+item.Hinhminhhoa)">
+        <a href="@Url.Action("ThemGioHang", "GioHang", new { @iMaSach=item.Masach,@strURL=Request.Url.ToString()})"><img class="nutchonmua" src="~/HinhAnhGiaoDien/nut_chonmua.gif"></a>
+        <p class="dongia">Đơn giá:<span class="gia">@string.Format("{0:0,0 VDN}", item.Dongia)</span></p>
+    </div>
+}
+@if (i % 3 == 0)
+{
+    <div style="clear:both"></div>
+}

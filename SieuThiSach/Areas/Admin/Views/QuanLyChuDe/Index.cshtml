@@ -1,0 +1,51 @@
+﻿@using SieuThiSach.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<CHUDE>
+
+@{
+    ViewBag.Title = "Quản lý chủ đề";
+    Layout = "~/Areas/Admin/Views/LayoutAD/Admin_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Thêm mới", "ThemMoi")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaCD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Tenchude)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaCD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tenchude)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "ChinhSua", new { @machude =item.MaCD}) |
+            @Html.ActionLink("Hiển thị", "HienThi", new { @machude = item.MaCD }) |
+            @Html.ActionLink("Xóa", "Xoa", new { @machude = item.MaCD })
+        </td>
+    </tr>
+}
+
+</table>
+@*tạo số trang*@
+Trang @(Model.Count < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+<div id="MenuTrang">
+    @Html.PagedListPager(Model, pag => Url.Action("Index", new { @page = pag }))
+</div>
+<style>
+    #MenuTrang li {
+        display: inline;
+        padding: 0 1%;
+    }
+</style>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Config</id>
+    <version>1.0.0.0</version>
+    <title>Config</title>
+    <authors>yuanaiqing</authors>
+    <owners>yuanaiqing</owners>
+    <licenseUrl>http://license_url_here_or_delete_this_line/</licenseUrl>
+    <projectUrl>http://project_url_here_or_delete_this_line/</projectUrl>
+    <iconUrl>https://api.nuget.org/v3-flatcontainer/config/1.0.0/icon</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Manage webServices configs</description>
+    <summary />
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Tag1 Tag2</tags>
+  </metadata>
+</package>

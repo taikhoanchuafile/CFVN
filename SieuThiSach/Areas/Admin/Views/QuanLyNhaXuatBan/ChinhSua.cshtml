@@ -1,0 +1,59 @@
+﻿@model SieuThiSach.Models.NHAXUATBAN
+
+@{
+    ViewBag.Title = "Chỉnh sửa nhà xuất bản";
+    Layout = "~/Areas/Admin/Views/LayoutAD/Admin_Layout.cshtml";
+}
+
+<h2>Chỉnh sửa nhà xuất bản</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaNXB, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("MaNXB", Model.MaNXB, new { @readonly=true})
+                @Html.ValidationMessageFor(model => model.MaNXB)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenNXB, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenNXB)
+                @Html.ValidationMessageFor(model => model.TenNXB)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiachiNXB, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DiachiNXB)
+                @Html.ValidationMessageFor(model => model.DiachiNXB)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DienthoaiNXB, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DienthoaiNXB)
+                @Html.ValidationMessageFor(model => model.DienthoaiNXB)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở về", "Index")
+</div>

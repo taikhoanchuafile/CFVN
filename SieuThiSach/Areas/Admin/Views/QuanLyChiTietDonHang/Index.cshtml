@@ -1,0 +1,65 @@
+﻿@using SieuThiSach.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<CTDATHANG>
+
+@{
+    ViewBag.Title = "Quản lý chi tiết đơn đặt hàng";
+    Layout = "~/Areas/Admin/Views/LayoutAD/Admin_Layout.cshtml";
+}
+
+<h2>Quản lý chi tiết đơn đặt hàng</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SoDH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SACH.Tensach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Soluong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Dongia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Thanhtien)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoDH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SACH.Tensach)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soluong)
+        </td>
+        <td>
+            @string.Format("{0:0,0} VND",item.Dongia)
+            @*@Html.DisplayFor(modelItem => item.Dongia)*@
+        </td>
+        <td>
+            @string.Format("{0:0,0} VND", item.Thanhtien)
+            @*@Html.DisplayFor(modelItem => item.Thanhtien)*@
+        </td>
+    </tr>
+}
+
+</table>
+@*tạo số trang*@
+Trang @(Model.Count  < Model.PageNumber ? 0:Model.PageNumber)/@Model.PageCount  
+<div id="MenuTrang">
+    @Html.PagedListPager(Model, pag =>Url.Action("Index",new { @page = pag }))
+</div>
+<style>
+    #MenuTrang li {
+        display: inline;
+        padding: 0 1%;
+    }
+</style>

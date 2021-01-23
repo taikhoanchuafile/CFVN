@@ -1,0 +1,104 @@
+﻿@model SieuThiSach.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Xóa khách hàng";
+    Layout = "~/Areas/Admin/Views/LayoutAD/Admin_Layout.cshtml";
+}
+
+<h2>XXóa khách hàngoa</h2>
+
+<h3>Bạn có thực sự muốn xóa khách hàng này không?</h3>
+<div>
+    <h4>KHACHHANG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HotenKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HotenKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiachiKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiachiKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DienthoaiKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienthoaiKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Matkhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matkhau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngaysinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaysinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gioitinh)
+        </dt>
+
+        <dd>
+            @if (Model.Gioitinh == true)
+            {
+                @Html.TextBox("Gioitinh", "Nam", new { @readonly = true })
+            }
+            else
+            {
+                @Html.TextBox("Gioitinh", "Nữ", new { @readonly = true })
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về", "Index")
+        </div>
+    }
+</div>

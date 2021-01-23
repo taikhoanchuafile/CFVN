@@ -1,0 +1,61 @@
+﻿@using SieuThiSach.Models;
+@model List<GioHang>
+@{
+    ViewBag.Title = "SuaGioHang";
+    Layout = "~/Views/LayOut/NguoiDung_LayOut.cshtml";
+}
+
+<h2>Giỏ hàng của bạn</h2>
+@ViewBag.ThongBao
+<table style="text-align: center; border: 1px solid;">
+    <tr style="font-weight: bold">
+        <td width="10%">Mã sách</td>
+        <td width="40%">Tên sách</td>
+        <td width="10%">Đơn giá</td>
+        <td width="10%">Số lượng</td>
+        <td width="10%">Thành tiền</td>
+        <td width="10%">Xóa</td>
+        <td width ="10%">Cập nhật</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.iMaSP</td>
+            <td>@item.sTenSP</td>
+            <td>@string.Format("{0:0,0} VND", item.dDonGia)</td>
+            @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @iMaSach = item.iMaSP }))
+            {
+                <td>@Html.TextBox("txtSoLuong", item.iSoLuong)</td>
+                <td>@item.dThanhTien</td>
+                <td>
+                    <a href="@Url.Action("XoaGioHang", "GioHang", new { @iMaSach=item.iMaSP})">
+                        <input type="submit" id="btnSubmit" value="" />
+                        <img src="~/HinhAnhGiaoDien/Delete.jpg" />
+                    </a>
+                </td>
+            <td>
+                <img src="~/HinhAnhGiaoDien/Save.jpg" />
+                <input type="submit" id="btnSubmit" value="Cập nhật" style="cursor: pointer;" />
+            </td>
+            }
+        </tr>
+    }
+</table>
+@*<br />
+<div style="float:right">Tổng cộng: @ViewBag.TongTien</div>
+<div style="clear:both"></div>
+<br />
+<div style="clear:both"></div>
+<ul id="chucnang">
+    <li><input type="submit" value="Thanh toán" /></li>
+    <li><a href="@Url.Action("XoaToanBo","GioHang")"><input type="submit" value="Xóa giỏ hàng" /></a></li>
+    <li><a href="@Url.Action("Index","Home")"><input type="submit" value="Tiếp tục mua" /></a></li>
+</ul>
+<style>
+    #chucnang li {
+        float: right;
+        padding-left: 5%;
+        display: inline;
+    }
+</style>*@
+

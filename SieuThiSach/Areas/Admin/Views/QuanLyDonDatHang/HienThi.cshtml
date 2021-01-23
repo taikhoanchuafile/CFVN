@@ -1,0 +1,106 @@
+﻿@model SieuThiSach.Models.DONDATHANG
+
+@{
+    ViewBag.Title = "Hiển thị đơn đặt hàng";
+    Layout = "~/Areas/Admin/Views/LayoutAD/Admin_Layout.cshtml";
+}
+
+<h2>Hiển thị đơn đặt hàng</h2>
+
+<div>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KHACHHANG.HotenKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHACHHANG.HotenKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngaydathang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaydathang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngaygiaohang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaygiaohang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tennguoinhan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tennguoinhan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diachinhan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diachinhan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dienthoainhan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dienthoainhan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HTThanhtoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HTThanhtoan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HTGiaohang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HTGiaohang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trigia)
+        </dt>
+
+        <dd>
+            @string.Format("{0:0,0} VND",Model.Trigia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dagiaohang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dagiaohang)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "ChinhSua", new { @maddh = Model.SoDH }) |
+    @Html.ActionLink("Trở về", "Index")
+</p>

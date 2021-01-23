@@ -1,0 +1,56 @@
+﻿@model SieuThiSach.Models.NHAXUATBAN
+
+@{
+    ViewBag.Title = "Xóa nhà xuất bản";
+    Layout = "~/Areas/Admin/Views/LayoutAD/Admin_Layout.cshtml";
+}
+
+<h2>Xóa nhà xuất bản</h2>
+
+<h3>Bạn có chắc là xóa nhà xuất bản này không?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNXB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNXB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiachiNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiachiNXB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DienthoaiNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienthoaiNXB)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về", "Index")
+        </div>
+    }
+</div>

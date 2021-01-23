@@ -1,0 +1,112 @@
+﻿@model SieuThiSach.Models.SACH
+
+@{
+    ViewBag.Title = "Xóa sản phẩm";
+    Layout = "~/Areas/Admin/Views/LayoutAD/Admin_Layout.cshtml";
+}
+
+<h2>Xóa sản phẩm</h2>
+
+<h3>Bạn có chắc là xóa sản phẩm này không?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Masach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Masach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tensach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tensach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dongia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dongia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Donvitinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Donvitinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mota)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Mota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hinhminhhoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hinhminhhoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaCD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaCD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNXB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngaycapnhat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaycapnhat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soluongban)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluongban)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Solanxem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Solanxem)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,106 @@
+﻿@model SieuThiSach.Models.SACH
+
+@{
+    ViewBag.Title = "Thêm mới sản phẩm";
+    Layout = "~/Areas/Admin/Views/LayoutAD/Admin_Layout.cshtml";
+}
+<h1>@ViewBag.ThongBaoTC</h1>
+<h2>Thêm mới sản phẩm</h2>
+
+@using (Html.BeginForm("ThemMoi", "QuanLySanPham", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tensach, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Tensach)
+                @Html.ValidationMessageFor(model => model.Tensach)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Dongia, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Dongia)
+                @Html.ValidationMessageFor(model => model.Dongia)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Donvitinh, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Donvitinh)
+                @Html.ValidationMessageFor(model => model.Donvitinh)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Hinhminhhoa, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="fileUpload" /> @*Name trùng với tên đối tượng  HttpPostedFileBase [name]*@ 
+                @ViewBag.ThongBao
+            </div>
+        </div>
+        <div style="clear:both"></div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CHUDE.Tenchude, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               @Html.DropDownList("MaCD")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NHAXUATBAN.TenNXB, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MaNXB")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ngaycapnhat, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ngaycapnhat)
+                @Html.ValidationMessageFor(model => model.Ngaycapnhat)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Soluongban, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Soluongban)
+                @Html.ValidationMessageFor(model => model.Soluongban)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Solanxem, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Solanxem)
+                @Html.ValidationMessageFor(model => model.Solanxem)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mota, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <textarea name="Mota">Phần mô tả</textarea>
+                @Html.ValidationMessageFor(model => model.Mota)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở về", "Index")
+</div>

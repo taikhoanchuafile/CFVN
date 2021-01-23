@@ -1,0 +1,97 @@
+﻿@model SieuThiSach.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Hiển thị khách hàng";
+    Layout = "~/Areas/Admin/Views/LayoutAD/Admin_Layout.cshtml";
+}
+
+<h2>Hiển thị khách hàng</h2>
+
+<div>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HotenKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HotenKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiachiKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiachiKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DienthoaiKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienthoaiKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Matkhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matkhau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngaysinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaysinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gioitinh)
+        </dt>
+
+        <dd>
+            @if(Model.Gioitinh == true)
+            {
+                @Html.TextBox("Gioitinh","Nam", new { @readonly=true})
+            }
+            else
+            {
+                @Html.TextBox("Gioitinh","Nữ", new { @readonly=true})
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "ChinhSua", new { @makh = Model.MaKH }) |
+    @Html.ActionLink("Trở về", "Index")
+</p>

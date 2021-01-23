@@ -1,0 +1,110 @@
+﻿@using SieuThiSach.Models;
+@model DONDATHANG
+@{
+    ViewBag.Title = "Thông tin đơn hàng";
+    Layout = "~/Views/LayOut/NguoiDung_LayOut.cshtml";
+}
+
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true)
+@{
+    SieuThiSach.Models.KHACHHANG kh = (SieuThiSach.Models.KHACHHANG)Session["TaiKhoan"];
+    SieuThiSach.Models.Mail mail=(Mail)Session["mail"];
+}
+
+
+<h2 style="background-color:aqua">Thông tin tài khoản</h2>
+<div style="margin-left:17%">
+    <div style="color:black;font-weight:bold">Họ tên:<span style="color:blue;font-weight:bold">@kh.HotenKH</span> </div>
+    <div style="color:black;font-weight:bold">Địa chỉ:<span style="color:blue;font-weight:bold">@kh.DiachiKH</span></div>
+    <div style="color:black;font-weight:bold">Điện thoại:<span style="color:blue;font-weight:bold">@kh.DienthoaiKH</span></div>
+    <div style="color:black;font-weight:bold">Email:<span style="color:blue;font-weight:bold">@kh.Email</span></div>
+</div>
+
+<br />
+<h2 style="background-color:aqua">Thông tin Giỏ hàng</h2>
+<table style="text-align: center; border: 1px solid; display: block">
+    <tr style="font-weight: bold; background-color: gray">
+        <td width="10%">Mã sách</td>
+        <td width="50%">Tên sách</td>
+        <td width="10%">Đơn giá</td>
+        <td width="10%">Số lượng</td>
+        <td width="10%">Thành tiền</td>
+        <td width="10%">Xóa</td>
+    </tr>
+    @foreach (var item in ViewBag.lstGioHang as List<GioHang>)
+    {
+        <tr>
+            <td>@item.iMaSP</td>
+            <td>@item.sTenSP</td>
+            <td>@string.Format("{0:0,0} VND", item.dDonGia)</td>
+            <td>@item.iSoLuong</td>
+            <td>@item.dThanhTien</td>
+            @*<td>
+                <a href="@Url.Action("XoaGioHang", "GioHang", new { @iMaSach=item.iMaSP})">
+                    <input type="submit" id="btnSubmit" value="" />
+                    <img src="~/HinhAnhGiaoDien/Delete.jpg" />
+                </a>
+            </td>*@
+        </tr>
+    }
+</table>
+<div style="float:right;font-size:15pt; margin-right:5%">Tổng cộng: @ViewBag.TongTien VND</div>
+<div style="clear:both"></div>
+<h2 style="background-color:aqua">Thông tin Giao hàng</h2><br />
+@using (Html.BeginForm("ThongTinDonHang", "GioHang", FormMethod.Post, new { @enctype ="multipart/form-data"}))
+{
+   @*<table style="display:none">
+    <tr>
+        <td>Gởi đến:</td>
+        <td>@Html.TextBox("To",kh.Email)</td>
+    </tr>
+    <tr>
+        <td>Tiêu đề:</td>
+        <td>@Html.TextBox("Subject","Đơn đặt hàng")</td>
+    </tr>
+    <tr>
+        <td>@Html.TextArea("Body","Họ và tên khách hàng:" + kh.HotenKH + "\nEmail:"+kh.Email+"\nĐịa chỉ:"+kh.DiachiKH+"Số điện thoại:"+kh.DienthoaiKH+"\n")</td>
+    </tr>
+</table>*@
+    <div>
+    Ngày giao:@Html.Editor("Ngaygiaohang")
+    @Html.ValidationMessageFor(n => n.Ngaydathang)
+</div>
+    <br />
+<div>
+    Người nhận:@Html.TextBox("Tennguoinhan")
+    @Html.ValidationMessageFor(n => n.Tennguoinhan)
+</div><br />
+    
+<div>
+    Địa chỉ:@Html.TextBox("Diachinhan")
+    @Html.ValidationMessageFor(n => n.Diachinhan)
+</div><br />
+<div>
+    Điện thoại:@Html.TextBox("Dienthoainhan")
+    @Html.ValidationMessageFor(n => n.Dienthoainhan)
+</div><br />
+
+<div class="form-group">
+    <div style="float:left;">Hình thức thanh toán</div>
+    <div style="float:left;margin-left:1%">
+        <div>@Html.RadioButton("HTThanhtoan", "True", true)Thanh toán trước khi giao hàng</div>
+        <div>@Html.RadioButton("HTThanhtoan", "False", false)Thanh toán sau khi giao hàng</div>
+    </div>
+</div><br />
+    
+    <div style="clear:both"></div>
+    
+    <div class="form-group">
+    <div style="float:left;">Hình thức giao hàng</div>
+    <div style="float:left;margin-left:1%">
+        <div>@Html.RadioButton("HTGiaohang", "True", true)Giao trực tiếp</div>
+        <div>@Html.RadioButton("HTGiaohang", "False", false)Chuyển giao</div>
+    </div>
+</div><br />
+     <div style="clear:both"></div>
+    <div><input type="submit" name="btnSubmit" value="Đồng ý" style="cursor:pointer;padding:1% 5%;float:right;margin-right:20%" /></div>
+}
+
+

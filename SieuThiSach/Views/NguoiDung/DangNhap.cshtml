@@ -1,0 +1,68 @@
+﻿@*css trang đăng nhập*@
+<link href="~/Content/NguoiDungCss/styledn.css" rel="stylesheet" />
+<link href="~/Content/NguoiDungCss/fontawesome-all.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/LayOut/NguoiDung_LayOut.cshtml";
+}
+<div style=" background: url(~/HinhAnhGiaoDien/bg_menu_top.jpg)">
+    <h1 style="color:black">@ViewBag.ThongBao</h1>
+    <div class=" w3l-login-form">
+        <h2>Đăng nhập</h2>
+        @using (Html.BeginForm())
+        {
+            @*<table>
+                  <tr>
+                    <td colspan="2" align="center"><b>ĐĂNG NHẬP</b></td>
+                  </tr>
+                  <tr>
+                    <td>Tên đăng nhập:</td>
+                    <td>
+                      @Html.TextBox("txtTaiKhoan")
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Mật Khẩu:</td>
+                    <td>
+                      @Html.TextBox("txtMatKhau")
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" align="center">
+                      <input type="submit" value="Đăng nhập" name="btDangNhap">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" align="right">
+                      <a href="@Url.Action("DoiMatKhau")"><i>Đổi mật khẩu</i></a>
+                    </td>
+                  </tr>
+                </table>*@
+            <div class=" w3l-form-group">
+                <label>Tài khoản:</label>
+                <div class="group">
+
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="txtTaiKhoan" class="form-control" placeholder="Tài khoản" required="required" />
+                </div>
+            </div>
+
+            <div class=" w3l-form-group">
+                <label>Mật khẩu:</label>
+                <div class="group">
+                    <i class="fas fa-unlock"></i>
+                    <input type="password" name="txtMatKhau" class="form-control" placeholder="Mật khẩu" required="required" />
+                </div>
+            </div>
+
+            <div class="forgot">
+                <a href="#">Quên mật khẩu</a>
+                @*<p><input type="checkbox">Remember Me</p>*@
+            </div>
+
+            <button type="submit">Đăng nhập</button>
+        }
+        <p class=" w3l-register-p">Nếu bạn chưa có tài khoản?<a href="@Url.Action("DangKy","NguoiDung")" class="register">Đăng ký</a></p>
+    </div>
+</div>
+

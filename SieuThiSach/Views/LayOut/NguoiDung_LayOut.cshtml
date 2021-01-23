@@ -1,0 +1,100 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/NguoiDungCss/Style.css" rel="stylesheet" />
+    @*css được chèn vào*@
+    <link href="~/Content/fontawesome-free-5.11.2-web/css/all.min.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <header>
+        <div id="logo"><img src="~/HinhAnhGiaoDien/LOGO.jpg"></div>
+        <div id="dn">
+            
+            @{
+                SieuThiSach.Models.KHACHHANG dn = (SieuThiSach.Models.KHACHHANG)Session["TaiKhoan"];
+            }
+           @if (dn == null)
+           {
+               <img src="~/HinhAnhGiaoDien/dangnhap.jpg" title="Đăng nhập">
+                <a href="@Url.Action("DangNhap","NguoiDung")">Đăng nhập</a>
+           }
+           else
+           {
+               <img src="~/HinhAnhGiaoDien/dangnhap.jpg" title="Đăng nhập">
+               @:Xin chào <a>@dn.HotenKH</a>
+                @:||<a href="@Url.Action("DangXuat","NguoiDung")">Thoát</a>
+           }
+
+            @*<a href="@Url.Action("DangKy","NguoiDung")">Đăng ký</a>*@
+            @Html.Action("GioHangPartial", "GioHang")
+        </div>
+    </header>
+    <nav>
+    @using (Html.BeginForm("KetQuaTimKiem", "TimKiem", FormMethod.Post))
+    {
+        <div id="subnav">
+            <ul>
+                <li><a href="@Url.Action("Index","Home")">TRANG CHỦ</a></li>
+                <li><a href="@Url.Action("GioiThieu","Home")">GIỚI THIỆU</a></li>
+                <li><a href="#">LIÊN HỆ</a></li>
+            </ul>
+            <div id="search">
+                    <input type="submit" value="Tìm sách" title="Tìm sách" >
+                    <input type="text" size="36" name="tsearch" placeholder="Hãy nhập tên sách cần tìm. . ." />
+            </div>
+        </div>
+    }
+    </nav>
+    <div id="body" style="height:auto;">
+            <img src="~/HinhAnhGiaoDien/Slider.jpg">
+        <article>
+            <aside id="left" style="float:left">
+                <div id="menu">
+                    <div class="menu">
+                        @Html.Action("ChuDePartial", "ChuDe")
+                    </div>
+                </div>
+                <div class="menu">
+                    @Html.Action("NhaXuatBanPartial", "NhaXuatBan")
+                </div>
+            </aside>
+            <section style="float:left;">
+                <p>Sách mới</p>
+                <div>
+                    @RenderBody()
+                </div>
+            </section>
+            <aside id="right">
+                <div id="sachbannhieu">
+                    @Html.Action("SachBanChayPartial", "Sach")
+                </div>
+                <div id="lienketwbsite">
+                    <p>LIÊN KẾT WEBSITE</p>
+                    <select onchange="window.open(this.options[this.selectedIndex].value'_blank')">
+                        <option selected>-------- Tin Tức --------</option>
+                        <option value="http://www.tdmu.edu.vn">ĐH Thủ Dầu Một</option>
+                        <option value="http://iteee.tdmu.edu.vn">Khoa CNTT</option>
+                    </select>
+                </div>
+                <div id="soluottruycap">
+                    <p>THỐNG KÊ TRUY CẬP</p>
+                    <h4>Tổng truy cập: 160</h4>
+                    <h4>Đang online: 3</h4>
+                </div>
+            </aside>
+        </article>
+
+        <div style="clear:both"></div>
+        <footer>
+                <p style ="color:black">Nguồn thiết kế web: hiepsiit.com/laptrinhweb</p>
+                <p style="color:black">©2016 - Nhà sách ABC . Allright Reserved</p>
+                <p style="color:black">Website được phát triển để sử dụng làm bài tập thực hành môn Thiết kế và Lập trình Web</p>
+                <p style="color:black">Email: abc.thudaumotuniversity@gmail.com</p>
+        </footer>
+    </div>
+</body>
+</html>

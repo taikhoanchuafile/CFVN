@@ -1,0 +1,18 @@
+﻿@using SieuThiSach.Models;
+@model List<SACH>
+
+<p>SÁCH BÁN CHẠY</p>
+@foreach (var item in Model)
+{
+    <marquee direction="up" scrollamuont="3" scrolldelay="100" onmousemove="stop()" onmouseout="start()">
+        <p><a href="@Url.Action("XemChiTiet", new { @masach=item.Masach})"><img src="@Url.Content("~/HinhAnhSP/"+item.Hinhminhhoa)">@item.Tensach</a></p>
+    </marquee>
+}
+
+@*<p>SÁCH BÁN CHẠY</p>
+<marquee direction="up" scrollamuont="3" scrolldelay="100" onmousemove="stop()" onmouseout="start()">
+    <p><a href="#"><img src="~/HinhAnhGiaoDien/TH008.jpg">Thủ Thuật Lập Trình Visual Basic 6</a></p>
+    <p><a href="#"><img src="~/HinhAnhGiaoDien/TH005.jpg">Hướng dẫn tự học Photoshop CS(Photoshop 6.0)</a></p>
+    <p><a href="#"><img src="~/HinhAnhGiaoDien/TH002.jpg">Căn Bản Về Photoshop CS Tinh Chỉnh Và Xử Lý Màu</a></p>
+    <p><a href="#"><img src="~/HinhAnhGiaoDien/THCB.jpg">Tin học Cơ bản</a></p>
+</marquee>*@

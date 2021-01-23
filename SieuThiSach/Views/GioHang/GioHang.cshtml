@@ -1,0 +1,60 @@
+﻿@using SieuThiSach.Models;
+@model List<GioHang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/LayOut/NguoiDung_LayOut.cshtml";
+}
+
+<h2>Giỏ hàng của bạn</h2>
+<br />
+@ViewBag.ThongBao
+<table style="text-align: center; border: 1px solid; display: block">
+    <tr style="font-weight: bold;">
+        <td width="10%">Mã sách</td>
+        <td width="50%">Tên sách</td>
+        <td width ="10%">Đơn giá</td>
+        <td width="10%">Số lượng</td>
+        <td width="10%">Thành tiền</td>
+        <td width="10%">Xóa</td>
+    </tr>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.iMaSP</td>
+        <td>@item.sTenSP</td>
+        <td>@string.Format("{0:0,0} VND",item.dDonGia)</td>
+            <td>@item.iSoLuong</td>
+            <td>@item.dThanhTien</td>
+            <td>
+                <a href="@Url.Action("XoaGioHang", "GioHang", new { @iMaSach=item.iMaSP})">
+                    <input type="submit" id="btnSubmit" value="" />
+                    <img src="~/HinhAnhGiaoDien/Delete.jpg" />
+                </a>  
+            </td>
+    </tr>
+}
+</table>
+<br />
+<div style="float:right;font-size:15pt; margin-right:5%">Tổng cộng: @ViewBag.TongTien VND</div>
+<div style="clear:both"></div>
+<br />
+<ul id="chucnang">
+    <a href="@Url.Action("ThongTinDonHang", "GioHang")"><li><input type="submit" value="Thanh toán" style="cursor: pointer; font-size: 15pt; padding: 10%" /></li></a>
+    <li><a href="@Url.Action("XoaToanBo","GioHang")"><input type="submit" value="Xóa giỏ hàng" style="cursor: pointer;font-size:15pt;padding:10%" /></a></li>
+    <li><a href="@Url.Action("Index","Home")"><input type="submit" value="Tiếp tục mua" style="cursor: pointer; font-size: 15pt; padding: 10%" /></a></li>
+    <li>
+        <a href="@Url.Action("SuaGioHang","GioHang")">
+            <input type="submit" id="btnSubmit" value="Chỉnh Sửa" style="cursor: pointer; font-size: 15pt; padding: 10%" />
+        </a>
+    </li>
+</ul>
+<style>
+    #chucnang li{   
+        width:100px;
+        height:100px;
+        float:right;
+        padding-left:6%;
+        display:inline;
+        margin-right:5%;
+    }
+</style>
